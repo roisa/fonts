@@ -54,6 +54,96 @@ export const posts: BlogPost[] = [
       "Debraht sits at the premium end of the category — designed for fashion, beauty, and hospitality brands where the sans serif needs to read as expensive rather than just neutral.",
     ],
   },
+  {
+    slug: "best-cartoon-fonts-kids-brands-packaging",
+    title: "Best Cartoon Fonts for Kids' Brands and Packaging",
+    keyword: "best cartoon fonts for kids brands",
+    excerpt:
+      "Bubbly, playful display fonts that make children's packaging, toy branding, and party invites feel fun instead of corporate.",
+    publishedAt: "2026-03-05",
+    relatedFontSlugs: ["comicoon-cartoon-font", "boxiest-bubble-font", "bublah-cartoon-font"],
+    body: [
+      "Kids' brands live or die on first impression at shelf height — a parent or a child needs to register 'fun' in under a second, and a stiff corporate sans serif works against that instinct every time.",
+      "Comicoon is the most versatile pick for this brief: rounded, comic-style letterforms that read as friendly on packaging, party invitations, and app icons alike without tipping into childish clip-art territory.",
+      "Boxiest leans further into bubble-letter chunkiness, which makes it a strong choice for toy logos and headline type on packaging where you want the typeface itself to feel like a character.",
+      "Bublah sits in between the two — playful but slightly more restrained — and works well for body copy on kids' product packaging where Comicoon or Boxiest would be too loud at small sizes.",
+    ],
+  },
+  {
+    slug: "best-signature-fonts-logos-personal-branding",
+    title: "Best Signature Fonts for Logos and Personal Branding",
+    keyword: "best signature fonts for logos",
+    excerpt:
+      "Authentic, hand-signed-style script fonts for personal brand logos, athlete merch, and autograph-style wordmarks.",
+    publishedAt: "2026-03-19",
+    relatedFontSlugs: ["lewis-hamilton-signature-font", "alexandra-signature-font"],
+    body: [
+      "A signature-style logo only works if it looks like an actual signature — one fluid stroke, natural variation in line weight, no two letters looking mechanically identical. That's a much higher bar than a generic script font, and it's why purpose-built signature fonts outperform repurposed script fonts for this specific job.",
+      "Lewis Hamilton was built around exactly this brief: athlete and creator personal brands that need a logo wordmark that reads as genuinely hand-signed, the kind you'd see on merch, a website masthead, or an autograph card.",
+      "Alexandra Signature has a softer, more rounded stroke that suits personal brands in beauty, coaching, and lifestyle spaces — anywhere the goal is approachable rather than athletic.",
+      "Both hold up at small sizes on social profile graphics and large on a hero banner, which is the real test for a signature font — most script fonts only look convincing at one size or the other.",
+    ],
+  },
+  {
+    slug: "best-vintage-serif-fonts-editorial-premium-branding",
+    title: "Best Vintage Serif Fonts for Editorial and Premium Branding",
+    keyword: "best vintage serif fonts for branding",
+    excerpt:
+      "Classic serif typefaces with real heritage character, built for editorial layouts and premium brands that want to feel established.",
+    publishedAt: "2026-04-02",
+    relatedFontSlugs: ["parandea-vintage-serif-font", "rishiona-serif-font"],
+    body: [
+      "A vintage serif does a job a modern sans serif simply can't: it signals heritage and craft before a reader processes a single word. That's why editorial mastheads, wine labels, and legacy-brand relaunches reach for serif typefaces with real historical character rather than a generic system serif.",
+      "Parandea is built around classic letterpress-era proportions — the kind of detail-rich serif you'd expect on a vintage book cover or a heritage wedding suite — which is why it pulls double duty across both editorial design and formal stationery.",
+      "Rishiona takes a more modern-elegant approach to the same serif tradition, with cleaner contrast between thick and thin strokes, making it a better fit for premium product branding — skincare, spirits, hospitality — that wants 'established' without looking dated.",
+      "Pairing either with a clean sans serif for body copy (Gailes or Debraht from the collection both work) gives you the editorial contrast most premium brand systems are built around.",
+    ],
+  },
+  {
+    slug: "best-bold-display-fonts-posters-packaging",
+    title: "Best Bold Display Fonts for Posters and Packaging Design",
+    keyword: "best bold display fonts for posters",
+    excerpt:
+      "Heavyweight headline typefaces built to dominate a poster, can label, or packaging panel from across the room.",
+    publishedAt: "2026-04-16",
+    relatedFontSlugs: ["befrung-bold-condensed-font", "damonte-adventure-font", "kolaron-condensed-font"],
+    body: [
+      "Poster and packaging type has one job most other type doesn't: it has to read at a distance, often competing against dozens of other products on a shelf or other posters on a wall. That's a different design brief than a logo or body copy, and it calls for a genuinely bold, condensed display face rather than a bold weight of a regular font.",
+      "Befrung is built for exactly this — a black condensed display face designed to fill space and dominate a layout, the kind of typeface you reach for when the headline needs to be the loudest thing on the page.",
+      "Damonte brings an adventure/outdoor edge to bold display type, well suited to packaging for outdoor gear, craft beverages, or event posters that want a rugged rather than corporate feel.",
+      "Kolaron is the most flexible of the three — a condensed sans serif display face that works for tighter headline space (think product packaging panels) without losing legibility the way some ultra-bold faces do at small sizes.",
+    ],
+  },
+  {
+    slug: "best-pixel-fonts-indie-game-branding",
+    title: "Best Pixel Fonts for Indie Game UI and Retro Branding",
+    keyword: "best pixel fonts for indie games",
+    excerpt:
+      "Bitmap-style pixel fonts for indie game UI, retro branding, and 8-bit nostalgia projects that need to look authentically old-school.",
+    publishedAt: "2026-04-30",
+    relatedFontSlugs: ["pixelate-pixel-font", "qigome-monoline-font"],
+    body: [
+      "Indie developers chasing a retro aesthetic live or die on authenticity — players can spot a pixel font that's actually just a regular font with jagged edges applied, and it breaks the nostalgia the whole art direction is built on.",
+      "Pixelate is a true bitmap-style font built grid-square by grid-square, which is why it remains the standard pick for in-game UI text, HUD elements, and title screens that need to read as genuinely 8-bit rather than pixel-themed.",
+      "For branding around the game itself — store pages, social graphics, merch — Qigome Monoline's clean single-weight strokes pair well with Pixelate's chunkier in-game look, giving you a retro-but-legible option for anywhere body text needs to actually be read comfortably.",
+      "Used together, the pair covers both halves of an indie game's typography needs: Pixelate for the in-game nostalgia, Qigome Monoline for the marketing material that has to convert.",
+    ],
+  },
+  {
+    slug: "best-futuristic-sans-fonts-tech-startup-branding",
+    title: "Best Futuristic Sans Serif Fonts for Tech Startup Branding",
+    keyword: "best futuristic fonts for tech startups",
+    excerpt:
+      "Sleek, technical sans serif and display fonts for SaaS landing pages, app branding, and startups that want to look ahead of the curve.",
+    publishedAt: "2026-05-14",
+    relatedFontSlugs: ["galberta-futuristic-font", "strateen-techno-font", "rachelasti-display-font"],
+    body: [
+      "Tech and SaaS branding has converged hard on a handful of safe, interchangeable grotesques over the last few years — which means a typeface with a genuinely futuristic edge is one of the fastest ways for a startup to look distinct without touching the rest of the brand system.",
+      "Galberta is built around sharp, geometric, sci-fi-adjacent letterforms, making it a strong pick for a startup logo or landing page hero that wants to signal 'frontier tech' rather than 'enterprise software.'",
+      "Strateen pushes further into technical, structured territory — originally built for esports branding, but the same sharpness reads just as well on a dashboard product UI or a developer tools landing page that wants to feel fast and precise.",
+      "Rachelasti is the more neutral option of the three — a clean display face that's futuristic-adjacent without being as aggressive as Galberta or Strateen, useful when the rest of the brand needs a calmer, more enterprise-friendly tone.",
+    ],
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
