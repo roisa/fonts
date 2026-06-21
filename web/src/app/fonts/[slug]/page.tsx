@@ -4,8 +4,9 @@ import Link from "next/link";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import CheckoutButtons from "@/components/CheckoutButtons";
-import { fonts, getFontBySlug } from "@/lib/fonts";
+import { fonts, getFontBySlug, categoryGroupSlug } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { lemonSqueezyCheckoutUrl } from "@/lib/lemonsqueezy";
 
@@ -51,13 +52,17 @@ export default async function FontPage({
       <Header />
       <main className="flex-1">
         <div className="mx-auto max-w-4xl px-6 py-12">
-          <nav className="mb-6 text-sm text-muted">
-            <Link href="/" className="hover:text-ink">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/#catalog" className="hover:text-ink">Fonts</Link>
-            <span className="mx-2">/</span>
-            <span className="text-ink">{font.name}</span>
-          </nav>
+          <Breadcrumbs
+            idSuffix={font.slug}
+            items={[
+              { label: "Home", href: "/" },
+              {
+                label: font.categoryGroup,
+                href: `/fonts/category/${categoryGroupSlug(font.categoryGroup)}`,
+              },
+              { label: font.name },
+            ]}
+          />
 
           <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
             <div>
@@ -89,18 +94,24 @@ export default async function FontPage({
                   <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
                     More {font.categoryGroup} fonts
                   </h2>
-                  <ul className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                     {related.map((r) => (
-                      <li key={r.slug}>
-                        <Link
-                          href={`/fonts/${r.slug}`}
-                          className="rounded-full border border-line px-3 py-1.5 text-sm hover:border-ink"
+                      <Link
+                        key={r.slug}
+                        href={`/fonts/${r.slug}`}
+                        className="flex flex-col gap-2 rounded-xl border border-line bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-20px_rgba(0,0,0,0.3)]"
+                      >
+                        <div
+                          className="text-2xl font-bold"
+                          style={{ fontFamily: r.previewFamily }}
                         >
-                          {r.name}
-                        </Link>
-                      </li>
+                          Ag
+                        </div>
+                        <div className="text-sm font-semibold">{r.name}</div>
+                        <div className="text-xs text-muted">${r.price}</div>
+                      </Link>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>

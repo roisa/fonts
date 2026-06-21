@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { posts, getPostBySlug } from "@/lib/blog";
 import { getFontBySlug } from "@/lib/fonts";
 import { site } from "@/lib/site";
@@ -47,11 +48,14 @@ export default async function BlogPostPage({
       <Header />
       <main className="flex-1">
         <article className="mx-auto max-w-2xl px-6 py-12">
-          <nav className="mb-6 text-sm text-muted">
-            <Link href="/" className="hover:text-ink">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/blog" className="hover:text-ink">Blog</Link>
-          </nav>
+          <Breadcrumbs
+            idSuffix={post.slug}
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.title },
+            ]}
+          />
 
           <time className="text-xs font-semibold uppercase tracking-wide text-muted">
             {new Date(post.publishedAt).toLocaleDateString("en-US", {
