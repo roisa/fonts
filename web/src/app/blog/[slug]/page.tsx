@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { posts, getPostBySlug } from "@/lib/blog";
 import { getFontBySlug } from "@/lib/fonts";
+import { bundles, getBundlePricing } from "@/lib/bundles";
 import { site } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -42,6 +43,8 @@ export default async function BlogPostPage({
   const relatedFonts = post.relatedFontSlugs
     .map((s) => getFontBySlug(s))
     .filter((f): f is NonNullable<typeof f> => Boolean(f));
+  const relatedBundle = bundles.find((b) => b.relatedPostSlug === post.slug);
+  const bundlePricing = relatedBundle ? getBundlePricing(relatedBundle) : undefined;
 
   return (
     <>
@@ -89,6 +92,20 @@ export default async function BlogPostPage({
                 ))}
               </div>
             </div>
+          )}
+
+          {relatedBundle && bundlePricing && (
+            <Link
+              href={`/bundles/${relatedBundle.slug}`}
+              className="mt-6 flex items-center justify-between gap-4 rounded-2xl border border-line bg-[#fdece6] p-6 text-sm transition hover:border-ink"
+            >
+              <span>
+                <strong>Buy this pairing as a bundle</strong> — {relatedBundle.name} includes
+                all fonts above for ${bundlePricing.desktopPrice} instead of $
+                {bundlePricing.desktopTotal}.
+              </span>
+              <span className="whitespace-nowrap font-semibold">View bundle →</span>
+            </Link>
           )}
         </article>
       </main>

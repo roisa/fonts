@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CheckoutButtons from "@/components/CheckoutButtons";
 import { fonts, getFontBySlug, categoryGroupSlug } from "@/lib/fonts";
+import { getBundlesForFont, getBundlePricing } from "@/lib/bundles";
 import { site } from "@/lib/site";
 import { lemonSqueezyCheckoutUrl } from "@/lib/lemonsqueezy";
 
@@ -46,6 +47,7 @@ export default async function FontPage({
   const related = fonts
     .filter((f) => f.categoryGroup === font.categoryGroup && f.slug !== font.slug)
     .slice(0, 4);
+  const fontBundles = getBundlesForFont(font.slug);
 
   return (
     <>
@@ -86,6 +88,29 @@ export default async function FontPage({
                   <strong>Free version available on DaFont</strong> ({font.dafontDownloads}{" "}
                   downloads). That version is for personal use only — the licenses below cover
                   client work, products for sale, and business use.
+                </div>
+              )}
+
+              {fontBundles.length > 0 && (
+                <div className="mt-8 flex flex-col gap-3">
+                  {fontBundles.map((bundle) => {
+                    const pricing = getBundlePricing(bundle);
+                    return (
+                      <Link
+                        key={bundle.slug}
+                        href={`/bundles/${bundle.slug}`}
+                        className="flex items-center justify-between gap-4 rounded-xl border border-line bg-[#fdece6] p-5 text-sm transition hover:border-ink"
+                      >
+                        <span>
+                          <strong>Part of the {bundle.name}</strong> — get this font plus{" "}
+                          {bundle.fontSlugs.length - 1} pairing font
+                          {bundle.fontSlugs.length - 1 === 1 ? "" : "s"} and save{" "}
+                          {pricing.savingsPercent}%.
+                        </span>
+                        <span className="whitespace-nowrap font-semibold">View bundle →</span>
+                      </Link>
+                    );
+                  })}
                 </div>
               )}
 

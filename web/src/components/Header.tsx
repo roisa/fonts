@@ -12,6 +12,7 @@ export default function Header() {
         <nav aria-label="Primary" className="hidden gap-7 text-sm font-medium text-muted md:flex">
           <Link href="/#catalog" className="hover:text-ink">Fonts</Link>
           <Link href="/#styles" className="hover:text-ink">Styles</Link>
+          <Link href="/bundles" className="hover:text-ink">Bundles</Link>
           <Link href="/#pricing" className="hover:text-ink">Licensing</Link>
           <Link href="/blog" className="hover:text-ink">Blog</Link>
         </nav>
