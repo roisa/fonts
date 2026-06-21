@@ -22,8 +22,8 @@ export async function generateMetadata({
   const font = getFontBySlug(slug);
   if (!font) return {};
 
-  const title = `${font.name} — ${font.category} Font`;
-  const description = `${font.description} Commercial license from $${font.price}. Instant download, live preview before you buy.`;
+  const title = `${font.name} Font | Download ${font.category}`;
+  const description = `${font.name} is a ${font.category} font by IbraCreative. ${font.notes} Instant download. Desktop, web & app licenses.`;
 
   return {
     title,
@@ -41,6 +41,10 @@ export default async function FontPage({
   const { slug } = await params;
   const font = getFontBySlug(slug);
   if (!font) notFound();
+
+  const related = fonts
+    .filter((f) => f.categoryGroup === font.categoryGroup && f.slug !== font.slug)
+    .slice(0, 4);
 
   return (
     <>
@@ -60,8 +64,10 @@ export default async function FontPage({
               <span className="text-xs font-semibold uppercase tracking-wide text-muted">
                 {font.category}
               </span>
-              <h1 className="mt-1 text-4xl font-extrabold tracking-tight">{font.name}</h1>
-              <p className="mt-3 max-w-xl text-muted">{font.description}</p>
+              <h1 className="mt-1 text-4xl font-extrabold tracking-tight">
+                {font.name} — {font.seoKeyword}
+              </h1>
+              <p className="mt-3 max-w-xl text-muted">{font.notes}</p>
 
               <div
                 className="mt-8 rounded-2xl border border-line bg-white p-8 text-5xl leading-tight"
@@ -69,6 +75,34 @@ export default async function FontPage({
               >
                 Ag Bb Cc 123
               </div>
+
+              {font.dafontDownloads && (
+                <div className="mt-6 rounded-xl border border-line bg-[#fdece6] p-5 text-sm">
+                  <strong>Free version available on DaFont</strong> ({font.dafontDownloads}{" "}
+                  downloads). That version is for personal use only — the licenses below cover
+                  client work, products for sale, and business use.
+                </div>
+              )}
+
+              {related.length > 0 && (
+                <div className="mt-10">
+                  <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
+                    More {font.categoryGroup} fonts
+                  </h2>
+                  <ul className="flex flex-wrap gap-2">
+                    {related.map((r) => (
+                      <li key={r.slug}>
+                        <Link
+                          href={`/fonts/${r.slug}`}
+                          className="rounded-full border border-line px-3 py-1.5 text-sm hover:border-ink"
+                        >
+                          {r.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col gap-6">
@@ -104,8 +138,9 @@ export default async function FontPage({
             "@context": "https://schema.org",
             "@type": "Product",
             name: font.name,
-            description: font.description,
+            description: font.notes,
             category: font.category,
+            brand: { "@type": "Brand", name: "IbraCreative" },
             offers: {
               "@type": "Offer",
               price: font.price,

@@ -2,15 +2,15 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { categories, fonts, type FontCategory } from "@/lib/fonts";
+import { categoryGroups, fonts, type FontCategoryGroup } from "@/lib/fonts";
 
-const filters: Array<FontCategory | "All"> = ["All", ...categories];
+const filters: Array<FontCategoryGroup | "All"> = ["All", ...categoryGroups];
 
 export default function FontCatalog() {
-  const [active, setActive] = useState<FontCategory | "All">("All");
+  const [active, setActive] = useState<FontCategoryGroup | "All">("All");
 
   const visible = useMemo(
-    () => (active === "All" ? fonts : fonts.filter((f) => f.category === active)),
+    () => (active === "All" ? fonts : fonts.filter((f) => f.categoryGroup === active)),
     [active]
   );
 

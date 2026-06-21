@@ -1,43 +1,320 @@
-export type FontCategory = "Display" | "Script" | "Serif" | "Sans" | "Handwritten";
+export type FontCategoryGroup =
+  | "Script"
+  | "Cartoon"
+  | "Pixel"
+  | "Display"
+  | "Sans Serif"
+  | "Serif"
+  | "Signature";
 
 export type FontProduct = {
+  rank: number;
   slug: string;
   name: string;
-  category: FontCategory;
+  /** Full descriptive category, e.g. "Script / Handwritten" */
+  category: string;
+  /** Broad bucket used for catalog filtering */
+  categoryGroup: FontCategoryGroup;
+  /** Primary SEO keyword this font's landing page targets */
+  seoKeyword: string;
   price: number;
   webPrice: number;
   previewFamily: string;
+  /** Approximate DaFont free-version downloads — proof of search demand */
+  dafontDownloads?: string;
+  source: string;
+  notes: string;
   badge?: "Bestseller" | "New";
-  description: string;
 };
 
-// Placeholder catalog — replace with the real 20 fonts picked from
-// ibracreative.com (name, category, pricing, and real @font-face files
-// under /public/fonts) before launch.
+// Real 20-font lineup sourced from ibracreative.com (paid catalog) and
+// cross-referenced against DaFont download counts for proven search demand.
+// Fonts with `dafontDownloads` set have a free version already driving
+// traffic on DaFont — the SEO page positions this as the commercial/paid
+// upsell for client and business use.
 export const fonts: FontProduct[] = [
-  { slug: "marbella-display", name: "Marbella Display", category: "Display", price: 24, webPrice: 49, previewFamily: "Impact, sans-serif", badge: "Bestseller", description: "A bold, condensed display face built for headlines and packaging." },
-  { slug: "velora-script", name: "Velora Script", category: "Script", price: 28, webPrice: 55, previewFamily: "'Brush Script MT', cursive", description: "A flowing modern script with elegant connecting swashes." },
-  { slug: "ardent-serif", name: "Ardent Serif", category: "Serif", price: 22, webPrice: 45, previewFamily: "Georgia, serif", description: "An editorial serif with warm, classic proportions." },
-  { slug: "northbound-sans", name: "Northbound Sans", category: "Sans", price: 20, webPrice: 40, previewFamily: "'Helvetica Neue', sans-serif", description: "A clean grotesque sans built for UI and branding systems." },
-  { slug: "saltline-hand", name: "Saltline Hand", category: "Handwritten", price: 18, webPrice: 36, previewFamily: "'Comic Sans MS', cursive", description: "A casual handwritten face for cards, packaging, and social posts." },
-  { slug: "quorum-display", name: "Quorum Display", category: "Display", price: 26, webPrice: 52, previewFamily: "'Arial Black', sans-serif", description: "A geometric display font with a confident, modern stance." },
-  { slug: "belmonte-serif", name: "Belmonte Serif", category: "Serif", price: 24, webPrice: 48, previewFamily: "'Times New Roman', serif", description: "A refined transitional serif suited for long-form editorial work." },
-  { slug: "driftwood-script", name: "Driftwood Script", category: "Script", price: 30, webPrice: 58, previewFamily: "cursive", description: "A relaxed brush script with an organic, handcrafted feel." },
-  { slug: "modular-mono", name: "Modular Mono", category: "Sans", price: 20, webPrice: 40, previewFamily: "'Courier New', monospace", badge: "New", description: "A technical monospace family for code, labels, and product UI." },
-  { slug: "harlow-display", name: "Harlow Display", category: "Display", price: 25, webPrice: 50, previewFamily: "fantasy", description: "A quirky retro display face with a playful, vintage feel." },
-  { slug: "petal-script", name: "Petal Script", category: "Script", price: 27, webPrice: 53, previewFamily: "cursive", description: "A delicate script ideal for invitations and feminine branding." },
-  { slug: "civic-serif", name: "Civic Serif", category: "Serif", price: 23, webPrice: 46, previewFamily: "serif", description: "A sturdy, institutional serif for reports and editorial layouts." },
-  { slug: "outline-sans", name: "Outline Sans", category: "Sans", price: 19, webPrice: 38, previewFamily: "sans-serif", description: "A neutral workhorse sans for body copy and interfaces." },
-  { slug: "lantern-hand", name: "Lantern Hand", category: "Handwritten", price: 18, webPrice: 36, previewFamily: "cursive", description: "A friendly handwritten face with a warm, approachable tone." },
-  { slug: "bravado-display", name: "Bravado Display", category: "Display", price: 29, webPrice: 56, previewFamily: "'Arial Black', sans-serif", badge: "Bestseller", description: "A heavyweight display face built to dominate a headline." },
-  { slug: "foundry-serif", name: "Foundry Serif", category: "Serif", price: 24, webPrice: 48, previewFamily: "Georgia, serif", description: "A versatile serif with foundry-grade detailing across weights." },
-  { slug: "wisteria-script", name: "Wisteria Script", category: "Script", price: 26, webPrice: 51, previewFamily: "'Brush Script MT', cursive", description: "A romantic script with delicate flourishes for premium branding." },
-  { slug: "brutalist-sans", name: "Brutalist Sans", category: "Sans", price: 21, webPrice: 42, previewFamily: "Arial, sans-serif", description: "A raw, utilitarian sans with sharp, unapologetic forms." },
-  { slug: "penny-hand", name: "Penny Hand", category: "Handwritten", price: 17, webPrice: 34, previewFamily: "cursive", description: "A light, sketchy handwritten style for informal layouts." },
-  { slug: "monarch-display", name: "Monarch Display", category: "Display", price: 28, webPrice: 54, previewFamily: "Impact, sans-serif", description: "A regal, high-contrast display face for luxury branding." },
+  {
+    rank: 1,
+    slug: "alexandra-signature-font",
+    name: "Alexandra Signature",
+    category: "Script / Handwritten",
+    categoryGroup: "Script",
+    seoKeyword: "alexandra signature font free download",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Brush Script MT', cursive",
+    dafontDownloads: "65,900+",
+    source: "DaFont #1 by downloads + ibracreative.com paid version",
+    notes: "Free version drives massive discovery — the paid commercial license is the core upsell.",
+    badge: "Bestseller",
+  },
+  {
+    rank: 2,
+    slug: "comicoon-cartoon-font",
+    name: "Comicoon",
+    category: "Fancy / Cartoon",
+    categoryGroup: "Cartoon",
+    seoKeyword: "cartoon font free download comic style",
+    price: 12,
+    webPrice: 23,
+    previewFamily: "'Comic Sans MS', cursive",
+    dafontDownloads: "28,600+",
+    source: "DaFont #2 by downloads",
+    notes: "Comic/cartoon fonts convert heavily on Canva, kids content, and YouTube thumbnails.",
+  },
+  {
+    rank: 3,
+    slug: "mominacute-handwritten-font",
+    name: "Mominacute",
+    category: "Script / Handwritten",
+    categoryGroup: "Script",
+    seoKeyword: "cute handwritten font free download",
+    price: 12,
+    webPrice: 23,
+    previewFamily: "cursive",
+    dafontDownloads: "17,100+",
+    source: "DaFont #3 by downloads",
+    notes: "Strong in the aesthetic design community; popular with Instagram content creators.",
+  },
+  {
+    rank: 4,
+    slug: "pixelate-pixel-font",
+    name: "Pixelate",
+    category: "Bitmap / Pixel",
+    categoryGroup: "Pixel",
+    seoKeyword: "pixel font bitmap retro game font",
+    price: 9,
+    webPrice: 17,
+    previewFamily: "'Courier New', monospace",
+    dafontDownloads: "18,100+",
+    source: "DaFont #4 by downloads",
+    notes: "Pixel font buyers are game devs and streamers — converts well priced under $10.",
+  },
+  {
+    rank: 5,
+    slug: "rachelasti-display-font",
+    name: "Rachelasti",
+    category: "Basic / Various",
+    categoryGroup: "Display",
+    seoKeyword: "modern display font free commercial use",
+    price: 9,
+    webPrice: 17,
+    previewFamily: "Arial, sans-serif",
+    dafontDownloads: "7,400+",
+    source: "DaFont",
+    notes: "Steady daily downloads; upsell on the commercial license.",
+  },
+  {
+    rank: 6,
+    slug: "boxiest-bubble-font",
+    name: "Boxiest",
+    category: "Fancy / Cartoon",
+    categoryGroup: "Cartoon",
+    seoKeyword: "bubble font rounded cartoon letters",
+    price: 12,
+    webPrice: 23,
+    previewFamily: "'Comic Sans MS', cursive",
+    dafontDownloads: "7,300+",
+    source: "DaFont",
+    notes: "Bubble fonts have strong commercial demand from teachers, kids brands, sticker makers.",
+  },
+  {
+    rank: 7,
+    slug: "qigome-monoline-font",
+    name: "Qigome Monoline",
+    category: "Fancy / Cartoon / Monoline",
+    categoryGroup: "Cartoon",
+    seoKeyword: "monoline font thin line cartoon font",
+    price: 12,
+    webPrice: 23,
+    previewFamily: "cursive",
+    dafontDownloads: "6,700+",
+    source: "DaFont",
+    notes: "Monoline aesthetic is trending for logos and branding; pairs well with a premium upsell.",
+  },
+  {
+    rank: 8,
+    slug: "bublah-cartoon-font",
+    name: "Bublah",
+    category: "Fancy / Cartoon",
+    categoryGroup: "Cartoon",
+    seoKeyword: "playful cartoon display font modern",
+    price: 12,
+    webPrice: 23,
+    previewFamily: "'Comic Sans MS', cursive",
+    dafontDownloads: "6,100+",
+    source: "DaFont",
+    notes: "Playful, modern cartoon style — strong for children's brand designers.",
+  },
+  {
+    rank: 9,
+    slug: "gailes-sans-serif-font",
+    name: "Gailes",
+    category: "Basic / Sans Serif",
+    categoryGroup: "Sans Serif",
+    seoKeyword: "clean modern sans serif font free",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Helvetica Neue', sans-serif",
+    dafontDownloads: "9,400+",
+    source: "DaFont",
+    notes: "'Modern sans serif' has high global search volume; strong for branding designers.",
+  },
+  {
+    rank: 10,
+    slug: "kolaron-condensed-font",
+    name: "Kolaron",
+    category: "Display / Condensed Sans Serif",
+    categoryGroup: "Display",
+    seoKeyword: "modern condensed sans serif font",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Arial Narrow', sans-serif",
+    source: "ibracreative.com bestseller + MyFonts",
+    notes: "Most-described font on the source site; multilingual support gives a global SEO edge.",
+    badge: "Bestseller",
+  },
+  {
+    rank: 11,
+    slug: "galberta-futuristic-font",
+    name: "Galberta",
+    category: "Display / Futuristic Sans Serif",
+    categoryGroup: "Display",
+    seoKeyword: "futuristic font sci-fi modern sans serif",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Arial Black', sans-serif",
+    source: "ibracreative.com + MyFonts",
+    notes: "Competes well in the 'sci-fi font' and 'tech font' keyword space.",
+  },
+  {
+    rank: 12,
+    slug: "rishiona-serif-font",
+    name: "Rishiona",
+    category: "Serif / Modern Elegant",
+    categoryGroup: "Serif",
+    seoKeyword: "elegant serif font modern branding",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "Georgia, serif",
+    source: "ibracreative.com + Dafont101 mention",
+    notes: "'Elegant serif font' is a top buyer keyword among luxury/fashion designers.",
+  },
+  {
+    rank: 13,
+    slug: "damonte-adventure-font",
+    name: "Damonte",
+    category: "Display / Adventure",
+    categoryGroup: "Display",
+    seoKeyword: "adventure font outdoor rustic display",
+    price: 17,
+    webPrice: 32,
+    previewFamily: "Impact, sans-serif",
+    source: "ibracreative.com + AbstractFonts mention ($17)",
+    notes: "Outdoor/travel/camping is an underserved niche with passionate Etsy/merch buyers.",
+  },
+  {
+    rank: 14,
+    slug: "strateen-techno-font",
+    name: "Strateen",
+    category: "Display / Futuristic Techno",
+    categoryGroup: "Display",
+    seoKeyword: "futuristic techno display font sleek",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Arial Black', sans-serif",
+    source: "Dafont101 (ibracreative credited)",
+    notes: "Esports and gaming channels are buyers with real commercial-use intent.",
+  },
+  {
+    rank: 15,
+    slug: "lewis-hamilton-signature-font",
+    name: "Lewis Hamilton",
+    category: "Signature / Script",
+    categoryGroup: "Signature",
+    seoKeyword: "signature font elegant sports style",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Brush Script MT', cursive",
+    source: "ibracreative.com + MyFonts",
+    notes: "Unique name-recognition positioning; good fit for F1/sports branding and PR hooks.",
+  },
+  {
+    rank: 16,
+    slug: "garbentas-minimal-sans-font",
+    name: "Garbentas",
+    category: "Sans Serif / Modern Minimal",
+    categoryGroup: "Sans Serif",
+    seoKeyword: "minimalist sans serif font branding logo",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Helvetica Neue', sans-serif",
+    source: "ibracreative.com Font Fusion blog post",
+    notes: "Minimalist sans is the single biggest font-buyer demographic (brand identity designers).",
+  },
+  {
+    rank: 17,
+    slug: "befrung-bold-condensed-font",
+    name: "Befrung",
+    category: "Display / Black Condensed",
+    categoryGroup: "Display",
+    seoKeyword: "black condensed bold display font headline",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Arial Black', sans-serif",
+    source: "ibracreative.com Font Fusion blog post",
+    notes: "Bold condensed is among the top-selling font styles for poster/editorial designers.",
+  },
+  {
+    rank: 18,
+    slug: "parandea-vintage-serif-font",
+    name: "Parandea",
+    category: "Serif / Vintage",
+    categoryGroup: "Serif",
+    seoKeyword: "vintage serif font retro classic typeface",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Times New Roman', serif",
+    source: "ibracreative.com Font Fusion blog post",
+    notes: "Vintage aesthetic is perennially popular on Etsy/Canva; wedding stationery buyers convert well.",
+  },
+  {
+    rank: 19,
+    slug: "debraht-elegant-sans-font",
+    name: "Debraht",
+    category: "Sans Serif / Modern Elegant",
+    categoryGroup: "Sans Serif",
+    seoKeyword: "elegant modern sans serif luxury branding font",
+    price: 17,
+    webPrice: 32,
+    previewFamily: "'Helvetica Neue', sans-serif",
+    source: "ibracreative.com Font Fusion blog post",
+    notes: "Strong fit for fashion, beauty, and hospitality brand design — buyers pay premium.",
+  },
+  {
+    rank: 20,
+    slug: "dunyah-script-font",
+    name: "Dunyah",
+    category: "Script / Elegant",
+    categoryGroup: "Script",
+    seoKeyword: "elegant script font wedding invitation",
+    price: 14,
+    webPrice: 27,
+    previewFamily: "'Brush Script MT', cursive",
+    source: "ibracreative.com + MyFonts",
+    notes: "'Wedding invitation font' is among the highest-converting font keywords — high-LTV buyers.",
+  },
 ];
 
-export const categories: FontCategory[] = ["Display", "Script", "Serif", "Sans", "Handwritten"];
+export const categoryGroups: FontCategoryGroup[] = [
+  "Script",
+  "Cartoon",
+  "Pixel",
+  "Display",
+  "Sans Serif",
+  "Serif",
+  "Signature",
+];
 
 export function getFontBySlug(slug: string): FontProduct | undefined {
   return fonts.find((f) => f.slug === slug);
