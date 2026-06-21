@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { fonts } from "@/lib/fonts";
+import { fonts, categoryGroups, categoryGroupSlug } from "@/lib/fonts";
 import { posts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -10,6 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/fonts/${font.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...categoryGroups.map((group) => ({
+      url: `${site.url}/fonts/category/${categoryGroupSlug(group)}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     { url: `${site.url}/blog`, changeFrequency: "weekly" as const, priority: 0.6 },
     ...posts.map((post) => ({

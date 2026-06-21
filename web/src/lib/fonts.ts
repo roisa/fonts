@@ -319,3 +319,11 @@ export const categoryGroups: FontCategoryGroup[] = [
 export function getFontBySlug(slug: string): FontProduct | undefined {
   return fonts.find((f) => f.slug === slug);
 }
+
+export function categoryGroupSlug(group: FontCategoryGroup): string {
+  return group.toLowerCase().replace(/\s+/g, "-");
+}
+
+export function getCategoryGroupBySlug(slug: string): FontCategoryGroup | undefined {
+  return categoryGroups.find((group) => categoryGroupSlug(group) === slug);
+}
