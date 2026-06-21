@@ -9,27 +9,11 @@ import {
   fonts,
   categoryGroups,
   categoryGroupSlug,
+  categoryGroupIntros,
   getCategoryGroupBySlug,
   type FontCategoryGroup,
 } from "@/lib/fonts";
 import { site } from "@/lib/site";
-
-const groupIntros: Record<FontCategoryGroup, string> = {
-  Script:
-    "Flowing, handwritten-style typefaces for wedding stationery, signatures, and brands that want a personal, human touch.",
-  Cartoon:
-    "Playful, bold display fonts for kids' brands, comics, packaging, and anything that should feel fun rather than corporate.",
-  Pixel:
-    "Bitmap and pixel-style fonts for retro game UI, indie game branding, and 8-bit nostalgia.",
-  Display:
-    "Bold, attention-grabbing headline fonts for logos, posters, and packaging where the typeface needs to do the heavy lifting.",
-  "Sans Serif":
-    "Clean, modern sans serif typefaces for brand identity, UI, and any project that needs to read as minimal and timeless.",
-  Serif:
-    "Classic and vintage serif fonts for editorial design, premium branding, and projects that need a sense of heritage.",
-  Signature:
-    "Authentic signature-style fonts for logos, autographs, and branding that wants to feel hand-signed.",
-};
 
 const groupFaqs: Record<FontCategoryGroup, { question: string; answer: string }[]> = {
   Script: [
@@ -167,7 +151,7 @@ export async function generateMetadata({
   if (!group) return {};
 
   const title = `${group} Fonts | Premium ${group} Font Collection`;
-  const description = `${groupIntros[group]} Browse ${
+  const description = `${categoryGroupIntros[group]} Browse ${
     fonts.filter((f) => f.categoryGroup === group).length
   } ${group.toLowerCase()} fonts on ${site.name} with instant download and commercial licensing.`;
 
@@ -206,7 +190,7 @@ export default async function CategoryPage({
           />
 
           <h1 className="text-4xl font-extrabold tracking-tight">{group} fonts</h1>
-          <p className="mt-3 max-w-2xl text-muted">{groupIntros[group]}</p>
+          <p className="mt-3 max-w-2xl text-muted">{categoryGroupIntros[group]}</p>
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {groupFonts.map((font) => (

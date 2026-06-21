@@ -327,3 +327,24 @@ export function categoryGroupSlug(group: FontCategoryGroup): string {
 export function getCategoryGroupBySlug(slug: string): FontCategoryGroup | undefined {
   return categoryGroups.find((group) => categoryGroupSlug(group) === slug);
 }
+
+export const categoryGroupIntros: Record<FontCategoryGroup, string> = {
+  Script:
+    "Flowing, handwritten-style typefaces for wedding stationery, signatures, and brands that want a personal, human touch.",
+  Cartoon:
+    "Playful, bold display fonts for kids' brands, comics, packaging, and anything that should feel fun rather than corporate.",
+  Pixel:
+    "Bitmap and pixel-style fonts for retro game UI, indie game branding, and 8-bit nostalgia.",
+  Display:
+    "Bold, attention-grabbing headline fonts for logos, posters, and packaging where the typeface needs to do the heavy lifting.",
+  "Sans Serif":
+    "Clean, modern sans serif typefaces for brand identity, UI, and any project that needs to read as minimal and timeless.",
+  Serif:
+    "Classic and vintage serif fonts for editorial design, premium branding, and projects that need a sense of heritage.",
+  Signature:
+    "Authentic signature-style fonts for logos, autographs, and branding that wants to feel hand-signed.",
+};
+
+export function getCategoryGroupPreviewFamily(group: FontCategoryGroup): string {
+  return fonts.find((f) => f.categoryGroup === group)?.previewFamily ?? "inherit";
+}

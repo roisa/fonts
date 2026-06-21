@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { categoryGroupSlug } from "@/lib/fonts";
+import { categoryGroups, categoryGroupSlug } from "@/lib/fonts";
 
 export default function Footer() {
   return (
@@ -18,10 +18,13 @@ export default function Footer() {
         <div>
           <h4 className="mb-3 text-sm font-semibold">Collection</h4>
           <ul className="flex flex-col gap-2 text-sm text-muted">
-            <li><Link href={`/fonts/category/${categoryGroupSlug("Display")}`} className="hover:text-ink">Display</Link></li>
-            <li><Link href={`/fonts/category/${categoryGroupSlug("Script")}`} className="hover:text-ink">Script</Link></li>
-            <li><Link href={`/fonts/category/${categoryGroupSlug("Serif")}`} className="hover:text-ink">Serif</Link></li>
-            <li><Link href={`/fonts/category/${categoryGroupSlug("Sans Serif")}`} className="hover:text-ink">Sans Serif</Link></li>
+            {categoryGroups.map((group) => (
+              <li key={group}>
+                <Link href={`/fonts/category/${categoryGroupSlug(group)}`} className="hover:text-ink">
+                  {group}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
