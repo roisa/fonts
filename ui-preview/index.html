@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeForge — Premium Fonts for Designers, Brands &amp; Print</title>
+<meta name="description" content="Browse 20 hand-picked premium fonts for branding, packaging, and print. Instant license, live preview, commercial-use ready.">
+<meta name="keywords" content="premium fonts, buy fonts, commercial font license, script fonts, display fonts, serif fonts, font marketplace">
+<link rel="canonical" href="https://typeforge.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="TypeForge — Premium Fonts for Designers, Brands & Print">
+<meta property="og:description" content="20 hand-picked premium fonts. Live preview your own text before you buy. Instant commercial license.">
+<meta property="og:image" content="https://typeforge.com/assets/og-image.jpg">
+<meta property="og:url" content="https://typeforge.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "TypeForge",
+  "description": "Premium font marketplace for designers and brands.",
+  "url": "https://typeforge.com/"
+}
+</script>
+
+<style>
+  :root{
+    --ink:#14141a;
+    --paper:#fbfaf7;
+    --accent:#d94f30;
+    --muted:#6b6b75;
+    --line:#e7e5df;
+    --card:#ffffff;
+    font-size:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,247,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1180px;margin:0 auto;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .logo{font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:0.95rem;font-weight:500;color:var(--muted);transition:color .15s;}
+  nav a:hover{color:var(--ink);}
+  .nav-actions{display:flex;gap:12px;align-items:center;}
+  .btn{
+    display:inline-block;padding:10px 20px;border-radius:8px;
+    font-weight:600;font-size:0.9rem;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{background:#000;}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  .hero{
+    max-width:1180px;margin:0 auto;padding:64px 24px 40px;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,4vw,3.4rem);
+    line-height:1.05;letter-spacing:-0.02em;font-weight:800;margin-bottom:18px;
+  }
+  .hero p.lead{color:var(--muted);font-size:1.05rem;max-width:480px;margin-bottom:28px;}
+  .hero-actions{display:flex;gap:14px;margin-bottom:28px;}
+  .trust-row{display:flex;gap:24px;color:var(--muted);font-size:0.85rem;}
+  .trust-row strong{color:var(--ink);}
+
+  .preview-card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:28px;box-shadow:0 12px 40px -20px rgba(0,0,0,0.25);
+  }
+  .preview-card label{font-size:0.8rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+  .preview-input{
+    width:100%;margin-top:10px;margin-bottom:20px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:8px;font-size:1rem;font-family:inherit;
+  }
+  .preview-text{
+    font-size:2.4rem;line-height:1.2;min-height:90px;word-break:break-word;
+    border-top:1px solid var(--line);padding-top:18px;transition:font-family .2s;
+  }
+  .font-switch{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+  .font-chip{
+    padding:6px 12px;border-radius:999px;border:1px solid var(--line);
+    font-size:0.8rem;cursor:pointer;background:#fff;
+  }
+  .font-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  section{max-width:1180px;margin:0 auto;padding:60px 24px;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:12px;}
+  .section-head h2{font-size:1.9rem;letter-spacing:-0.01em;}
+  .section-head p{color:var(--muted);font-size:0.95rem;}
+
+  .filter-row{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+  .filter-row button{
+    padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;
+    font-size:0.85rem;font-weight:600;cursor:pointer;color:var(--muted);
+  }
+  .filter-row button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  .font-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .font-card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px;display:flex;flex-direction:column;gap:14px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .font-card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(0,0,0,0.3);}
+  .font-card .glyph-preview{font-size:2.1rem;font-weight:700;line-height:1.1;}
+  .font-card .name{font-weight:700;font-size:1rem;}
+  .font-card .tag{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .font-card .meta-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;}
+  .price{font-weight:700;}
+  .badge{
+    font-size:0.7rem;background:#fdece6;color:var(--accent);padding:3px 8px;
+    border-radius:6px;font-weight:700;align-self:flex-start;
+  }
+
+  .how-it-works{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;}
+  .step .num{
+    display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--ink);
+    color:#fff;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;margin-bottom:14px;
+  }
+  .step h3{margin-bottom:8px;font-size:1.05rem;}
+  .step p{color:var(--muted);font-size:0.9rem;}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .price-card.featured{border:2px solid var(--ink);}
+  .price-card h3{font-size:1.1rem;}
+  .price-card .amount{font-size:2.2rem;font-weight:800;}
+  .price-card .amount span{font-size:0.95rem;color:var(--muted);font-weight:500;}
+  .price-card ul{list-style:none;font-size:0.9rem;color:var(--muted);display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+  .price-card ul li::before{content:"✓ ";color:var(--accent);font-weight:700;}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;}
+  .footer-wrap{
+    max-width:1180px;margin:0 auto;padding:48px 24px;
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;
+  }
+  footer h4{font-size:0.85rem;margin-bottom:14px;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  footer a{color:var(--muted);font-size:0.88rem;}
+  footer a:hover{color:var(--ink);}
+  .footer-bottom{
+    border-top:1px solid var(--line);padding:18px 24px;text-align:center;
+    color:var(--muted);font-size:0.8rem;
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .font-grid{grid-template-columns:repeat(2,1fr);}
+    .how-it-works,.pricing-grid{grid-template-columns:1fr;}
+    .footer-wrap{grid-template-columns:1fr 1fr;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="#" class="logo">Type<span>Forge</span></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#catalog">Fonts</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Licensing</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Sign in</a>
+      <a href="#catalog" class="btn btn-primary">Browse fonts</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1>Fonts that make brands look like they paid an agency.</h1>
+      <p class="lead">20 hand-picked typefaces, ready for commercial use in seconds. Type your own headline below and see it live before you buy.</p>
+      <div class="hero-actions">
+        <a href="#catalog" class="btn btn-primary">Explore the collection</a>
+        <a href="#pricing" class="btn btn-ghost">View licensing</a>
+      </div>
+      <div class="trust-row">
+        <span><strong>20</strong> curated fonts</span>
+        <span><strong>Instant</strong> download</span>
+        <span><strong>Commercial</strong> license included</span>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <label for="preview-input">Try your own text</label>
+      <input id="preview-input" class="preview-input" type="text" value="Design Something Bold" maxlength="60">
+      <div id="preview-text" class="preview-text" style="font-family: Georgia, serif;">Design Something Bold</div>
+      <div class="font-switch" id="font-switch">
+        <button class="font-chip active" data-font="Georgia, serif">Editorial Serif</button>
+        <button class="font-chip" data-font="'Brush Script MT', cursive">Modern Script</button>
+        <button class="font-chip" data-font="Impact, sans-serif">Bold Display</button>
+        <button class="font-chip" data-font="'Courier New', monospace">Studio Mono</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <div class="section-head">
+      <div>
+        <h2>The 20-font collection</h2>
+        <p>Every font on this page is yours to preview — full files unlock after purchase.</p>
+      </div>
+    </div>
+
+    <div class="filter-row" role="tablist" aria-label="Filter fonts by category">
+      <button class="active">All styles</button>
+      <button>Display</button>
+      <button>Script</button>
+      <button>Serif</button>
+      <button>Sans</button>
+      <button>Handwritten</button>
+    </div>
+
+    <div class="font-grid" id="font-grid">
+      <!-- font cards injected by JS -->
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-head">
+      <div>
+        <h2>How it works</h2>
+        <p>From preview to commercial use in three steps.</p>
+      </div>
+    </div>
+    <div class="how-it-works">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Preview live</h3>
+        <p>Type your own headline or logo text and see exactly how it looks before paying anything.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Pick your license</h3>
+        <p>Desktop, Web, or App license — scoped to how you'll actually use the font.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Download instantly</h3>
+        <p>OTF, TTF and WOFF2 files delivered immediately, plus a receipt for your records.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head">
+      <div>
+        <h2>Licensing, kept simple</h2>
+        <p>No subscriptions. Pay once, use forever within your license scope.</p>
+      </div>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Desktop</h3>
+        <div class="amount">$24<span> / font</span></div>
+        <ul>
+          <li>Personal &amp; client projects</li>
+          <li>Print, packaging, social</li>
+          <li>1 user, unlimited projects</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Choose Desktop</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Web + App</h3>
+        <div class="amount">$49<span> / font</span></div>
+        <ul>
+          <li>Everything in Desktop</li>
+          <li>Website embedding (WOFF2)</li>
+          <li>Mobile app embedding</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Choose Web + App</a>
+      </div>
+      <div class="price-card">
+        <h3>Full Collection</h3>
+        <div class="amount">$199<span> / all 20 fonts</span></div>
+        <ul>
+          <li>All licenses included</li>
+          <li>Free updates &amp; new weights</li>
+          <li>Best value for agencies</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Get the bundle</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-wrap">
+    <div>
+      <a href="#" class="logo">Type<span>Forge</span></a>
+      <p style="color:var(--muted);font-size:0.88rem;margin-top:12px;max-width:280px;">
+        A small, curated type foundry. 20 fonts, no clutter, full commercial rights.
+      </p>
+    </div>
+    <div>
+      <h4>Collection</h4>
+      <ul>
+        <li><a href="#">Display</a></li>
+        <li><a href="#">Script</a></li>
+        <li><a href="#">Serif</a></li>
+        <li><a href="#">Sans</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">License terms</a></li>
+        <li><a href="#">Refund policy</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 TypeForge. All fonts licensed, not sold outright.</div>
+</footer>
+
+<script>
+  // Live preview text + font switching
+  const input = document.getElementById('preview-input');
+  const preview = document.getElementById('preview-text');
+  const chips = document.querySelectorAll('.font-chip');
+
+  input.addEventListener('input', () => {
+    preview.textContent = input.value || ' ';
+  });
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      preview.style.fontFamily = chip.dataset.font;
+    });
+  });
+
+  // Sample 20-font catalog (placeholder data — swap with real font names/files)
+  const fonts = [
+    { name: "Marbella Display", tag: "Display", price: 24, family: "Impact, sans-serif", badge: "Bestseller" },
+    { name: "Velora Script", tag: "Script", price: 28, family: "'Brush Script MT', cursive" },
+    { name: "Ardent Serif", tag: "Serif", price: 22, family: "Georgia, serif" },
+    { name: "Northbound Sans", tag: "Sans", price: 20, family: "'Helvetica Neue', sans-serif" },
+    { name: "Saltline Hand", tag: "Handwritten", price: 18, family: "'Comic Sans MS', cursive" },
+    { name: "Quorum Display", tag: "Display", price: 26, family: "'Arial Black', sans-serif" },
+    { name: "Belmonte Serif", tag: "Serif", price: 24, family: "'Times New Roman', serif" },
+    { name: "Driftwood Script", tag: "Script", price: 30, family: "cursive" },
+    { name: "Modular Mono", tag: "Sans", price: 20, family: "'Courier New', monospace", badge: "New" },
+    { name: "Harlow Display", tag: "Display", price: 25, family: "fantasy" },
+    { name: "Petal Script", tag: "Script", price: 27, family: "cursive" },
+    { name: "Civic Serif", tag: "Serif", price: 23, family: "serif" },
+    { name: "Outline Sans", tag: "Sans", price: 19, family: "sans-serif" },
+    { name: "Lantern Hand", tag: "Handwritten", price: 18, family: "cursive" },
+    { name: "Bravado Display", tag: "Display", price: 29, family: "'Arial Black', sans-serif", badge: "Bestseller" },
+    { name: "Foundry Serif", tag: "Serif", price: 24, family: "Georgia, serif" },
+    { name: "Wisteria Script", tag: "Script", price: 26, family: "'Brush Script MT', cursive" },
+    { name: "Brutalist Sans", tag: "Sans", price: 21, family: "Arial, sans-serif" },
+    { name: "Penny Hand", tag: "Handwritten", price: 17, family: "cursive" },
+    { name: "Monarch Display", tag: "Display", price: 28, family: "Impact, sans-serif" }
+  ];
+
+  const grid = document.getElementById('font-grid');
+  grid.innerHTML = fonts.map(f => `
+    <article class="font-card" data-tag="${f.tag}">
+      ${f.badge ? `<span class="badge">${f.badge}</span>` : ''}
+      <div class="glyph-preview" style="font-family:${f.family}">Ag</div>
+      <div class="name">${f.name}</div>
+      <div class="tag">${f.tag}</div>
+      <div class="meta-row">
+        <span class="price">$${f.price}</span>
+        <a href="#" class="btn btn-ghost" style="padding:6px 12px;font-size:0.8rem;">Preview</a>
+      </div>
+    </article>
+  `).join('');
+
+  // Filter buttons
+  const filterButtons = document.querySelectorAll('.filter-row button');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.textContent.replace('All styles', '').trim();
+      document.querySelectorAll('.font-card').forEach(card => {
+        card.style.display = (!tag || card.dataset.tag === tag) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
