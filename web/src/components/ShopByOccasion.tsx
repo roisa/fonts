@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { bundles, getBundleFonts, getBundlePricing } from "@/lib/bundles";
+import { getFontFamilyCss } from "@/lib/fonts";
 
 export default function ShopByOccasion() {
   return (
@@ -39,7 +40,7 @@ export default function ShopByOccasion() {
               <div className="font-bold">{bundle.name}</div>
               <div className="flex gap-2">
                 {bundleFonts.map((f) => (
-                  <span key={f.slug} className="text-2xl" style={{ fontFamily: f.previewFamily }}>
+                  <span key={f.slug} className="text-2xl" style={{ fontFamily: getFontFamilyCss(f) }}>
                     Aa
                   </span>
                 ))}

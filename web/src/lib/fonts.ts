@@ -19,7 +19,14 @@ export type FontProduct = {
   seoKeyword: string;
   price: number;
   webPrice: number;
+  /** System-font fallback stack used until the real webfont file is wired up */
   previewFamily: string;
+  /**
+   * Filename of the real webfont in `public/fonts/` (e.g. "alexandra-signature-font.woff2").
+   * Once set, `getFontFamilyCss` and the generated @font-face rules in the root layout pick it
+   * up automatically — no other code needs to change.
+   */
+  webFontFile?: string;
   /** Approximate DaFont free-version downloads — proof of search demand */
   dafontDownloads?: string;
   source: string;
@@ -346,5 +353,32 @@ export const categoryGroupIntros: Record<FontCategoryGroup, string> = {
 };
 
 export function getCategoryGroupPreviewFamily(group: FontCategoryGroup): string {
-  return fonts.find((f) => f.categoryGroup === group)?.previewFamily ?? "inherit";
+  const font = fonts.find((f) => f.categoryGroup === group);
+  return font ? getFontFamilyCss(font) : "inherit";
+}
+
+/**
+ * CSS font-family value for a font: the real webfont name first (once `webFontFile`
+ * is set and the @font-face rule below is registered), then the system fallback stack.
+ * Listing the real name even before the file exists is harmless — the browser just
+ * skips an unmatched family — so every preview upgrades automatically once fonts ship.
+ */
+export function getFontFamilyCss(font: FontProduct): string {
+  return `'${font.name}', ${font.previewFamily}`;
+}
+
+/** @font-face rules for every font that has a real webfont file, for injection in the root layout. */
+export function getFontFaceCss(): string {
+  return fonts
+    .filter((f): f is FontProduct & { webFontFile: string } => Boolean(f.webFontFile))
+    .map(
+      (f) => `@font-face {
+  font-family: '${f.name}';
+  src: url('/fonts/${f.webFontFile}') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}`
+    )
+    .join("\n");
 }

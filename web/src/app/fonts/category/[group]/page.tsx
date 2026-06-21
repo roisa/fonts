@@ -11,6 +11,7 @@ import {
   categoryGroupSlug,
   categoryGroupIntros,
   getCategoryGroupBySlug,
+  getFontFamilyCss,
   type FontCategoryGroup,
 } from "@/lib/fonts";
 import { site } from "@/lib/site";
@@ -204,7 +205,7 @@ export default async function CategoryPage({
                     {font.badge}
                   </span>
                 )}
-                <div className="text-3xl font-bold" style={{ fontFamily: font.previewFamily }}>
+                <div className="text-3xl font-bold" style={{ fontFamily: getFontFamilyCss(font) }}>
                   Ag
                 </div>
                 <div className="font-bold">{font.name}</div>

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { categoryGroups, fonts, type FontCategoryGroup } from "@/lib/fonts";
+import { categoryGroups, fonts, getFontFamilyCss, type FontCategoryGroup } from "@/lib/fonts";
 
 const filters: Array<FontCategoryGroup | "All"> = ["All", ...categoryGroups];
 
@@ -53,7 +53,7 @@ export default function FontCatalog() {
                 {font.badge}
               </span>
             )}
-            <div className="text-3xl font-bold" style={{ fontFamily: font.previewFamily }}>
+            <div className="text-3xl font-bold" style={{ fontFamily: getFontFamilyCss(font) }}>
               Ag
             </div>
             <div className="font-bold">{font.name}</div>

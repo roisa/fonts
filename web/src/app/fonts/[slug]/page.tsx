@@ -6,7 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CheckoutButtons from "@/components/CheckoutButtons";
-import { fonts, getFontBySlug, categoryGroupSlug } from "@/lib/fonts";
+import FontTypePreview from "@/components/FontTypePreview";
+import { fonts, getFontBySlug, categoryGroupSlug, getFontFamilyCss } from "@/lib/fonts";
 import { getBundlesForFont, getBundlePricing } from "@/lib/bundles";
 import { site } from "@/lib/site";
 import { lemonSqueezyCheckoutUrl } from "@/lib/lemonsqueezy";
@@ -76,12 +77,7 @@ export default async function FontPage({
               </h1>
               <p className="mt-3 max-w-xl text-muted">{font.notes}</p>
 
-              <div
-                className="mt-8 rounded-2xl border border-line bg-white p-8 text-5xl leading-tight"
-                style={{ fontFamily: font.previewFamily }}
-              >
-                Ag Bb Cc 123
-              </div>
+              <FontTypePreview fontFamily={getFontFamilyCss(font)} />
 
               {font.dafontDownloads && (
                 <div className="mt-6 rounded-xl border border-line bg-[#fdece6] p-5 text-sm">
@@ -128,7 +124,7 @@ export default async function FontPage({
                       >
                         <div
                           className="text-2xl font-bold"
-                          style={{ fontFamily: r.previewFamily }}
+                          style={{ fontFamily: getFontFamilyCss(r) }}
                         >
                           Ag
                         </div>

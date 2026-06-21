@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { bundles, getBundleFonts, getBundlePricing } from "@/lib/bundles";
+import { getFontFamilyCss } from "@/lib/fonts";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -63,7 +64,7 @@ export default function BundlesIndexPage() {
                       <span
                         key={f.slug}
                         className="text-2xl"
-                        style={{ fontFamily: f.previewFamily }}
+                        style={{ fontFamily: getFontFamilyCss(f) }}
                       >
                         Aa
                       </span>

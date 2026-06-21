@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CheckoutButtons from "@/components/CheckoutButtons";
 import { bundles, getBundleBySlug, getBundleFonts, getBundlePricing } from "@/lib/bundles";
+import { getFontFamilyCss } from "@/lib/fonts";
 import { getPostBySlug } from "@/lib/blog";
 import { site } from "@/lib/site";
 import { lemonSqueezyCheckoutUrl } from "@/lib/lemonsqueezy";
@@ -75,14 +76,14 @@ export default async function BundlePage({
                 <div className="mt-8 rounded-2xl border border-line bg-white p-8">
                   <div
                     className="text-4xl leading-tight"
-                    style={{ fontFamily: headlineFont.previewFamily }}
+                    style={{ fontFamily: getFontFamilyCss(headlineFont) }}
                   >
                     {bundle.previewHeadline}
                   </div>
                   {bodyFont && (
                     <div
                       className="mt-3 text-lg text-muted"
-                      style={{ fontFamily: bodyFont.previewFamily }}
+                      style={{ fontFamily: getFontFamilyCss(bodyFont) }}
                     >
                       {bundle.previewBody}
                     </div>
@@ -103,7 +104,7 @@ export default async function BundlePage({
                     >
                       <div
                         className="text-2xl font-bold"
-                        style={{ fontFamily: font.previewFamily }}
+                        style={{ fontFamily: getFontFamilyCss(font) }}
                       >
                         Ag
                       </div>
