@@ -38,6 +38,23 @@ delivery (e.g. email the purchased font + license key) in
 `src/app/api/checkout/paypal/capture-order/route.ts` and via Lemon Squeezy webhooks
 once you have a fulfillment system.
 
+## Admin sales dashboard
+
+`/admin` shows recent orders and total revenue pulled live from Lemon Squeezy and
+PayPal. It's gated by HTTP Basic Auth (`src/proxy.ts`) using the `ADMIN_USER` /
+`ADMIN_PASSWORD` env vars — leave them unset to keep the route disabled (returns 503).
+Each provider section shows "not connected" until its API credentials
+(`LEMONSQUEEZY_API_KEY`, or `PAYPAL_CLIENT_ID` + `PAYPAL_CLIENT_SECRET` with
+"Transaction Search" enabled on the PayPal app) are set. The page isn't linked from
+anywhere in the site nav.
+
+## Content marketing
+
+- `src/lib/blog.ts` — long-tail "best fonts for X" posts, rendered at `/blog` and
+  `/blog/[slug]` with `Article` JSON-LD and links back to relevant font product pages.
+- `/about`, `/contact` (with a working contact form posting to `/api/contact`),
+  `/license-terms`, `/refund-policy`, `/privacy` — linked from the footer.
+
 ## SEO
 
 - Per-font static pages at `/fonts/[slug]` with metadata + `Product` JSON-LD

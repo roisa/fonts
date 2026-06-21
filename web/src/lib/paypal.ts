@@ -9,6 +9,7 @@ async function getAccessToken(): Promise<string> {
     throw new Error("Missing PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET env vars");
   }
 
+
   const res = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
     method: "POST",
     headers: {
@@ -75,4 +76,92 @@ export async function capturePayPalOrder(orderId: string) {
   }
 
   return res.json();
+}
+
+export type PayPalTransaction = {
+  id: string;
+  payerEmail: string;
+  amount: number;
+  currency: string;
+  status: string;
+  date: string;
+};
+
+export type PayPalSummary = {
+  configured: boolean;
+  transactions: PayPalTransaction[];
+  totalRevenue: number;
+  error?: string;
+};
+
+/**
+ * Pulls the last 31 days of completed PayPal transactions via the Reporting
+ * API. Returns configured: false (instead of throwing) when PayPal
+ * credentials aren't set yet, so the admin dashboard can render a
+ * "not connected" state. Requires the app to have "Transaction Search" added
+ * in the PayPal developer dashboard.
+ */
+export async function getPaypalTransactions(): Promise<PayPalSummary> {
+  if (!process.env.PAYPAL_CLIENT_ID || !process.env.PAYPAL_CLIENT_SECRET) {
+    return { configured: false, transactions: [], totalRevenue: 0 };
+  }
+
+  try {
+    const accessToken = await getAccessToken();
+    const end = new Date();
+    const start = new Date(end.getTime() - 31 * 24 * 60 * 60 * 1000);
+
+    const res = await fetch(
+      `${PAYPAL_API_BASE}/v1/reporting/transactions?start_date=${start.toISOString()}&end_date=${end.toISOString()}&fields=transaction_info,payer_info`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+        cache: "no-store",
+      }
+    );
+
+    if (!res.ok) {
+      return {
+        configured: true,
+        transactions: [],
+        totalRevenue: 0,
+        error: `PayPal reporting API error: ${res.status}`,
+      };
+    }
+
+    const data = await res.json();
+    type RawTransaction = {
+      transaction_info: {
+        transaction_id: string;
+        transaction_amount: { value: string; currency_code: string };
+        transaction_status: string;
+        transaction_initiation_date: string;
+      };
+      payer_info?: { email_address?: string };
+    };
+    const transactions: PayPalTransaction[] = (
+      (data.transaction_details ?? []) as RawTransaction[]
+    ).map((t) => ({
+      id: t.transaction_info.transaction_id,
+      payerEmail: t.payer_info?.email_address ?? "",
+      amount: Number(t.transaction_info.transaction_amount.value),
+      currency: t.transaction_info.transaction_amount.currency_code,
+      status: t.transaction_info.transaction_status,
+      date: t.transaction_info.transaction_initiation_date,
+    }));
+
+    return {
+      configured: true,
+      transactions,
+      totalRevenue: transactions
+        .filter((t) => t.status === "S")
+        .reduce((sum, t) => sum + t.amount, 0),
+    };
+  } catch {
+    return {
+      configured: true,
+      transactions: [],
+      totalRevenue: 0,
+      error: "Failed to reach PayPal reporting API",
+    };
+  }
 }
